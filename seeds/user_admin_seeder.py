@@ -11,7 +11,8 @@ class UserAdminSeeder(Seeder):
                 'username': 'admin',
                 'password': '123456',
                 'email': 'administrador@gmail.com',
-                'rol_id':1
+                'rol_id':1,
+                "phone":"99999999"
             }
         ]
         for user in users:
