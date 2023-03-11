@@ -31,7 +31,7 @@ def GenerateMessage(messageUser, number):
         data = listaMenu(number)     
     elif "direccion" in messageUser:
         data = Direccion(messageUser, number)
-    elif "si" in messageUser:
+    elif "si" == messageUser:
         data = ConfirmarPedido(messageUser, number)
     
     else:
