@@ -19,7 +19,7 @@ class Webhook:
 
     def VerifyToken(self, query):
         try:
-            accessToken = os.getenv("ACCES_TOKEN")
+            accessToken = "ACCESODIFICIL"
             token = query.args.get("hub.verify_token")
             challenge = query.args.get("hub.challenge")
             if token != None and challenge != None and token == accessToken:
