@@ -10,8 +10,8 @@ from datetime import datetime
 
 
 menu_ns = api.namespace(
-    name = "Plato de Comida",
-    description ="Ruta para los menus",
+    name = "Producto",
+    description ="Ruta de los diferentes productos de un menu",
     path = "/menu"
 )
 
@@ -25,7 +25,7 @@ request_schema = MenuRequestSchema(menu_ns)
 class Menu(Resource):
     @menu_ns.expect(request_schema.all())
     def get(self):
-        '''Lista de menu para hoy'''
+        '''Listar todos los productos dispoinible para el menu de hoy'''
         query = request_schema.all().parse_args()
         controller = MenuController()
         return controller.all(query)
@@ -35,7 +35,7 @@ class Menu(Resource):
     @role_required(rol_id=1)
     @menu_ns.expect(request_schema.create(), validate=True)
     def post (self):
-        '''Creacion de Menus'''
+        '''Creacion de productos de un menu'''
         controller = MenuController()
         return controller.create(request.json)
 
@@ -44,7 +44,7 @@ class Menu(Resource):
 class MenuById(Resource):
     @jwt_required()
     def get(self, id):
-        '''Obtener menu por id'''
+        '''Inhabilitar un producto por un id'''
         controller = MenuController()
         return controller.getById(id)
 
@@ -52,14 +52,14 @@ class MenuById(Resource):
     @role_required(rol_id=1)
     @menu_ns.expect(request_schema.update(), validate=True)
     def put(self, id):
-        '''Actualizar menu'''
+        '''Actualizar un producto '''
         controller =MenuController()
         return controller.update(id, request.json)
 
     @jwt_required()
     @role_required(rol_id=1)
     def delete(self, id):
-        '''Inhabilitar menu por ID'''
+        '''Inhabilitar producto por id'''
         controller = MenuController()
         return controller.delete(id)
 

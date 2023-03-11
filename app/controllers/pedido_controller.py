@@ -15,7 +15,8 @@ class PedidoController:
         try:
             page = query['page']
             per_page = query['per_page']
-            records = self.model.where(estado = "En proceso").order_by('id').paginate(
+            current_date = datetime.date.today().strftime("%Y-%m-%d")
+            records = self.model.where(estado = "En proceso",fecha=current_date ).order_by('id').paginate(
                 page=page, per_page=per_page
             )
 

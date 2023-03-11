@@ -44,7 +44,7 @@ class MenuController:
             db.session.commit()
 
             return {
-                'message': 'El menu se creo con exito'
+                'message': 'El producto se creo con exito'
             }, 201
         except Exception as e:
             db.session.rollback()
@@ -59,7 +59,7 @@ class MenuController:
                 response = self.schema(many=False)
                 return response.dump(record), 200
             return {
-                'message': 'No se encontro el usuario mencionado'
+                'message': 'No se encontro el producto'
             }, 404
         except Exception as e:
             return {
@@ -75,10 +75,10 @@ class MenuController:
                 db.session.add(record)
                 db.session.commit()
                 return {
-                    'message': f'El usuario {id}, ha sido actualizado'
+                    'message': f'El producto {id}, ha sido actualizado'
                 }, 200
             return {
-                'message': 'No se encontro el usuario mencionado'
+                'message': 'No se encontro el producto mencionado'
             }, 404
         except Exception as e:
             db.session.rollback()
@@ -95,10 +95,10 @@ class MenuController:
                 db.session.add(record)
                 db.session.commit()
                 return {
-                    'message': f'El usuario {id}, ha sido deshabilitado'
+                    'message': f'El producto {id}, ha sido deshabilitado'
                 }, 200
             return {
-                'message': 'No se encontro el usuario mencionado'
+                'message': 'No se encontro el producto mencionado'
             }, 404
         except Exception as e:
             db.session.rollback()

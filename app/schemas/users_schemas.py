@@ -22,7 +22,8 @@ class UsersRequestSchema:
             'username': fields.String(required=True, max_length=80),
             'password': fields.String(required=True, max_length=120),
             'email': fields.String(required=True, max_length=140),
-            'rol_id': fields.Integer(required=True)
+            'rol_id': fields.Integer(required=True),
+            "phone": fields.String(required=True, max_length=140)
         })
 
     def update(self):

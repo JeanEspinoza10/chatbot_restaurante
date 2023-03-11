@@ -2,6 +2,7 @@ from app import api
 from flask_restx import Resource
 from flask import request
 from app.controllers.webhookWhatsapp_controller import Webhook
+import flask_cors
 
 webhook_ns = api.namespace (
     name = "Webhook",

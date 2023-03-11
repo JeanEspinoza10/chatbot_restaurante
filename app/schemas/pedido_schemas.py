@@ -24,8 +24,9 @@ class PedidoRequestSchema:
     def update(self):
         return self.namespace.model("Actualizar pedido", {
             "menu_id": fields.Integer(required=True),
-            "user_id": fields.Integer(required=True),
+            "user_id": fields.Integer(),
             "direccion":fields.String(required=True, max_length=120),
+            "estado":fields.String(default="En proceso")
         })
     
 

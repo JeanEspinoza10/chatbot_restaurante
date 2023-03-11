@@ -18,7 +18,6 @@ class MenuRequestSchema:
         return self.namespace.model('Menu Create', {
             'name': fields.String(required=True, max_length=120),
             "precio": fields.Integer(required=True),
-            'stock': fields.Integer(required=True),
             "detalle": fields.String(required=True, max_length=250),
             "categoria_id": fields.Integer(required=True)
         })

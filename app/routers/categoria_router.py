@@ -7,8 +7,8 @@ from app.schemas.categoria_schemas import CategoriaRequestSchema
 from app.controllers.categoria_controller import CategoriaController
 
 cateogira_ns = api.namespace(
-    name="Categorias de productos",
-    description ="Ruta para añadir las categorias",
+    name="Categorias",
+    description ="Ruta de categorias de los productos",
     path = "/categorias"
 )
 

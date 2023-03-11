@@ -38,6 +38,8 @@ class UserController:
 
     def create(self, data):
         try:
+            phone = data["phone"]
+            data["phone"] = f"51{phone}"
             new_record = self.model.create(**data)
             new_record.hashPassword()
             db.session.add(new_record)

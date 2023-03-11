@@ -10,10 +10,9 @@ class Menu(BaseModel):
     name =Column(String(120))
     precio = Column(Integer)
     fecha = Column(Date, default=func.now())
-    stock = Column(Integer)
     disonibilidad = Column(Boolean, default=True)
     detalle = Column(String(250))
-    pedidos = relationship('PedidoModel', uselist=True, back_populates='menus')
+    pedidos = relationship('PedidoModel', back_populates='menus', uselist= True)
     
     # Añadir un modelo que relacione la categoria independiente
     categoria_id = Column(Integer,ForeignKey("categoria.id"))

@@ -2,6 +2,15 @@ from app import db
 from flask_jwt_extended import current_user
 from app.models.users_model import UserModel
 import os
+from app.utils.whatsappservice import GenerateMessage, SendMessageWhatsapp
+from app.utils.utilmes import GetTextUser
+
+from flask import request
+
+
+# Iniciando las variables
+
+
 
 class Webhook():
     def __init__(self):
@@ -22,20 +31,27 @@ class Webhook():
     
     def ReceiverMessage(self, query):
         try:
-            body = query.get_json()
+            #Obtener el texto y el numero telefonico
+            body = request.get_json()
             entry = (body["entry"])[0]
             changes = (entry["changes"])[0]
             value = (changes["value"])
             message = (value["messages"])[0]
-            messageUser = (message["text"])["body"]
             number = message["from"]
-            #text = util.GetTextUser(message)
-            #GenerateMessage(messageUser, number)
-            print(messageUser)
+            text = GetTextUser(message)
 
-            return "EVENT_RECEIVED"
+            # Generando la data para enviar
+            data = GenerateMessage(text, number)
+            
+
+            #Enviando mensaje a whatsapp
+            e = SendMessageWhatsapp(data)
+            print(e)
+            return "EVENT_RECEIVED", data
         except Exception as e:
             print("Error 1", e)
             return "EVENT_RECEIVED"
+
+
 
     
