@@ -12,7 +12,7 @@ from flask import request
 
 
 
-class Webhook():
+class Webhook:
     def __init__(self):
         self.model = UserModel
         self.current_user = current_user
