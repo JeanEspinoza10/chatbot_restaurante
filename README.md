@@ -1,113 +1,44 @@
+# Proyecto Chatbot para Restaurante
 
-## Modulos
+Este proyecto tiene como objetivo implementar un Producto Mínimo Viable (MVP) para un chatbot destinado a un restaurante. El chatbot permitirá a los clientes interactuar con el restaurante a través de WhatsApp utilizando la API oficial de WhatsApp. La aplicación estará desarrollada utilizando la librería Flask de Python y almacenará la información en una base de datos PostgreSQL.
 
-1. Usuarios
-2. Roles
-3. Autenticación
+## Funcionalidades principales
 
-## Modelos
+1. **Interacción con clientes:** Los clientes podrán enviar mensajes al número de WhatsApp del restaurante para realizar consultas, hacer pedidos o reservar mesas.
 
-```sql
--- Usuarios
-- id
-- name
-- last_name
-- username
-- password
-- email
-- rol_id
-- status
+2. **Menú del restaurante:** El chatbot proporcionará información sobre el menú del restaurante, los precios y las opciones disponibles.
 
--- Roles
-- id
-- name
-- status
-```
+3. **Realización de pedidos:** Los clientes podrán realizar pedidos a través del chatbot y recibir confirmaciones sobre el estado del pedido.
 
-## Caracteristicas
+4. **Reserva de mesas:** Los clientes podrán reservar mesas para una fecha y hora específica.
 
-1. Login
-   - [x] Creación de token (JWT - JSONWEBTOKEN | access_token, refresh_token).
-   - [x] Validación de contraseñas encriptadas (bcrypt).
-2. Registro
-   - [x] Encriptación de contraseñas (bcrypt).
-3. Recuperar contraseña
-   - [x] Generar una contraseña nueva.
-   - [x] Enviar un correo con un template, mencionando la contraseña generada.
-4. CRUD para cada Modelo
-   - [x] Listado con paginación (Obtener los datos relacionados).
-   - [x] Obtener registro por id (Obtener los datos relacionados).
-   - [x] Creación de registro.
-   - [x] Actualización de registro.
-   - [x] Eliminar registro (SOFTDELETE).
-5. Decoradores
-   - [x] Proteger rutas con autenticación.
-   - [x] Proteger rutas por rol.
-6. Documentación y Validaciones
-   - [x] Swagger
-   - [x] Schemas
-7. Despliegue
-   - [Render](https://render.com/)
+5. **Información de contacto:** El chatbot proporcionará información de contacto del restaurante, como dirección, número de teléfono y horario de atención.
 
-## Recursos
+6. **Respuestas automáticas:** El chatbot responderá automáticamente a ciertas consultas comunes, como horarios de atención, ubicación y preguntas frecuentes.
 
-### Contenido de archivo .env
+## Tecnologías utilizadas
 
-```py
-FLASK_APP='main.py'
-FLASK_DEBUG=True
-FLASK_RUN_HOST=127.0.0.1
-FLASK_RUN_PORT=5000
-ENVIRONMENT='development'
+- Python: Lenguaje de programación principal para el desarrollo del chatbot.
+- Flask: Framework web de Python para crear la aplicación y definir las rutas de la API.
+- API de WhatsApp: Interfaz oficial proporcionada por WhatsApp para enviar y recibir mensajes.
+- PostgreSQL: Sistema de gestión de bases de datos para almacenar la información relevante del chatbot.
 
-DATABASE_URL='postgresql://postgres:mysql@localhost:5432/flask_boilerplate'
 
-JWT_SECRET='tecsup'
+## Procedimiento del Chatbot
 
-MAIL_SERVER='smtp.gmail.com'
-MAIL_PORT=587
-MAIL_USE_TLS=True
-MAIL_USERNAME=''
-MAIL_PASSWORD=''
-```
+El flujo del chatbot consta de los siguientes pasos:
 
-### Documentación
+1. El usuario inicia la conversación enviando un mensaje al número de WhatsApp integrado.
+2. El bot responde con un mensaje de bienvenida y solicita al usuario que proporcione sus datos, como nombre, dirección y correo.
+3. Después de recopilar los datos, el bot instruye al usuario a escribir una palabra clave para obtener la lista de menú.
+4. El bot envía al usuario la lista de menú en forma de botones interactivos, aprovechando la funcionalidad de la API de WhatsApp.
+5. Cuando el usuario selecciona un elemento del menú, el bot registra esa elección y verifica si el usuario confirma el pedido.
+6. Si se confirma el pedido, el bot finaliza el proceso y proporciona una confirmación al usuario.
 
-- SQLAlchemy
-  - [Metodos usados para el modelo](https://docs.sqlalchemy.org/en/14/orm/query.html#sqlalchemy.orm.Query.all)
-  - [Tipo de datos](https://docs.sqlalchemy.org/en/14/core/types.html)
-  - [Nuevos metodos para el modelo](https://github.com/absent1706/sqlalchemy-mixins/blob/master/README.md)
-- FlaskRestX
-  - [Tipo de datos](https://flask-restx.readthedocs.io/en/latest/_modules/flask_restx/fields.html)
-  - [Response](https://flask-restx.readthedocs.io/en/latest/marshalling.html)
-  - [Request Parsing](https://flask-restx.readthedocs.io/en/latest/parsing.html)
-  - [Swagger](https://flask-restx.readthedocs.io/en/latest/swagger.html)
-- FlaskJWTExtended
-  - [BlackList](https://flask-jwt-extended.readthedocs.io/en/stable/blocklist_and_token_revoking/)
-  - [Proteccion de rutas](https://flask-jwt-extended.readthedocs.io/en/stable/optional_endpoints/)
+## Implementaciones Futuras
 
-### Conexión URI a PGSQL
+Además de las funcionalidades actuales, se considerarán las siguientes mejoras en el futuro:
 
-```py
-postgresql://usuario:password@ip_servidor:puerto/nombre_bd
-```
-
-### Migraciones
-
-- Iniciar las migraciones (Ejecuta una sola vez)
-
-```sh
-flask db init
-```
-
-- Crear una migración (Cuando se crea un modelo nuevo o se modifica uno anterior)
-
-```sh
-flask db migrate -m "Comentario"
-```
-
-- Subir los cambios a nuestra BD
-
-```sh
-flask db upgrade
-```
+- Modelado de la base de datos: Se explorará la posibilidad de almacenar y registrar el contexto de una conversación para una experiencia más personalizada.
+- Método de Pago en Línea: Se implementará la opción de pago en línea para facilitar la finalización de los pedidos.
+- Derivación a Operador Humano: Se añadirá una característica para derivar la conversación a un operador humano en situaciones específicas que requieran atención especializada.
