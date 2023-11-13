@@ -2,6 +2,9 @@
 
 Este proyecto tiene como objetivo implementar un Producto Mínimo Viable (MVP) para un chatbot destinado a un restaurante. El chatbot permitirá a los clientes interactuar con el restaurante a través de WhatsApp utilizando la API oficial de WhatsApp. La aplicación estará desarrollada utilizando la librería Flask de Python y almacenará la información en una base de datos PostgreSQL.
 
+
+![Proceso del servicio](img/proceso.jpg)
+
 ## Funcionalidades principales
 
 1. **Interacción con clientes:** Los clientes podrán enviar mensajes al número de WhatsApp del restaurante para realizar consultas, hacer pedidos o reservar mesas.
@@ -42,3 +45,4 @@ Además de las funcionalidades actuales, se considerarán las siguientes mejoras
 - Modelado de la base de datos: Se explorará la posibilidad de almacenar y registrar el contexto de una conversación para una experiencia más personalizada.
 - Método de Pago en Línea: Se implementará la opción de pago en línea para facilitar la finalización de los pedidos.
 - Derivación a Operador Humano: Se añadirá una característica para derivar la conversación a un operador humano en situaciones específicas que requieran atención especializada.
+
